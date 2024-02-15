@@ -129,13 +129,13 @@ function ( M, Num=10, silent=FALSE ) {
 
   invCh <- try (solve( Ch, eyeM ), silent=TRUE)
 
-  # if ( class(invCh) == "try-error" ) {
-  #   return (NaN)
-  # }
-  # else {
-  #   invM <- invCh %*% t(invCh)
+  if ( class(invCh) == "try-error" ) {
+    return (NaN)
+  }
+  else {
+    invM <- invCh %*% t(invCh)
     
-    ifelse ( class(invCh) == "try-error",return (NaN), invM <- invCh %*% t(invCh))
+    # ifelse ( class(invCh) == "try-error",return (NaN), invM <- invCh %*% t(invCh))
     
     if ( jitter == 0 ) {
       ans <- list(invM=invM, jitter=jitter, chol=Ch)
@@ -143,8 +143,8 @@ function ( M, Num=10, silent=FALSE ) {
     else ans <- list(invM=invM, jitM=M+jitter*eyeM , jitter=jitter, chol=Ch)
 
     return (ans)
-  }
 }
+
 .kernFactors <-
 function (kern, factorType) {
   factors <- list()
