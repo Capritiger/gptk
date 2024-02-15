@@ -145,6 +145,7 @@ function ( M, Num=10, silent=FALSE ) {
     return (ans)
 }
 }
+
 .kernFactors <-
 function (kern, factorType) {
   factors <- list()
